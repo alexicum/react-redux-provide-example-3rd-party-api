@@ -25,11 +25,7 @@ if (process.env.NODE_ENV !== 'production') {
     });
 
     module.hot.accept('./defaultProps', () => {
-      const providers = require('./defaultProps').default.providers;
-
-      providers.router = router;
-
-      reloadProviders(providers);
+      reloadProviders(require('./defaultProps').default.providers);
     });
   }
 }

@@ -1,8 +1,16 @@
 import React, { PropTypes } from 'react';
 import * as components from './index';
 
+const { InputToProps, UserPosts } = components;
+
 const App = () => (
-  <div>Hello, world!</div>
+  <div>
+    <b>Enter a user ID (number):</b>
+
+    <InputToProps inputName="userId">
+      <UserPosts />
+    </InputToProps>
+  </div>
 );
 
 export default App;
