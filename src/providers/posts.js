@@ -1,12 +1,31 @@
+import createLogger from 'redux-logger';
+
 const apiUrl = 'http://jsonplaceholder.typicode.com/posts';
+
+const SET_POSTS = 'SET_POSTS';
 
 const toParams = obj => Object.keys(obj)
   .map(key => `${encodeURIComponent(key)}=${encodeURIComponent(obj[key])}`)
   .join('&');
 
 export default {
+  actions: {
+    setPosts: posts => {
+      console.log('setPosts action');
+      return { type: SET_POSTS, posts: posts }; 
+    }
+  },
+
   reducers: {
-    userId: (state = '') => state
+    userId: (state = '') => state,
+    posts: (state = [], action) => {
+      switch(action.type) {
+        // case SET_POSTS:
+        //   return {...state, posts: action.posts};
+        default:          
+          return state;
+      }        
+    }
   },
 
   replication: {
@@ -20,5 +39,6 @@ export default {
           .catch(error => setResult(error));
       }
     }
-  }
+  },
+  middleware: [createLogger()]  
 };

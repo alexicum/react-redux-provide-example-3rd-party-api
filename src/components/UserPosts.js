@@ -24,18 +24,23 @@ const UserPosts = ({ userId, result }) => {
     );
   }
 
+  // dispatch action  
+  console.log('setPosts');
+  setPosts(result);  
+
   return (
     <div style={{ marginTop, color: 'darkgreen' }}>
       <b>Found:</b>
       <pre>{JSON.stringify(result, null, 2)}</pre>
     </div>
-  );
+  );  
 };
 
 UserPosts.propTypes = {
   userId: PropTypes.string.isRequired,
   query: PropTypes.any,
-  result: PropTypes.any
+  result: PropTypes.any,
+  setPosts: PropTypes.func.isRequired
 };
 
 UserPosts.defaultProps = {

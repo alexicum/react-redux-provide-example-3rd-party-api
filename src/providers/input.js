@@ -1,3 +1,5 @@
+import createLogger from 'redux-logger';
+
 const SET_INPUT_VALUE = 'SET_INPUT_VALUE';
 
 export default {
@@ -11,5 +13,7 @@ export default {
     inputValue: (state = '', { type, inputValue }) => type === SET_INPUT_VALUE
       ? inputValue
       : state
-  }
+  },
+
+  middleware: [createLogger()]
 };
